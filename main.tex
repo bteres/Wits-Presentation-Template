@@ -1,0 +1,147 @@
+% -*- pdf: BrettTerespolskyPEIES092014 -*-
+%\documentclass{beamer}
+\documentclass[ignorenonframetext]{beamer}
+
+\makeatletter
+\def\input@path{{./primitives/}}
+\makeatother
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows, decorations.markings}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+\pgfplotsset{compat=1.10}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+
+\tikzstyle{highlight}=[color=red]
+
+\pgfplotscreateplotcyclelist{linestyles*}{solid,dashed, dotted, loosely dashed, loosely dotted, loosely dashdotted}
+
+	% \pgfdeclaremask{logo-mask}{witseie-logo.mask}
+	\pgfdeclareimage[height=1.5cm]{wits-logo}{WITS-logo.png}
+	\pgfdeclareimage[height=1.5cm]{iclp-logo}{ICLPlogo.png}
+	\pgfdeclaremask{logo-mask}{witseie-logo.mask}
+	\pgfdeclareimage[mask=logo-mask,interpolate=true,height=1.5cm]{witseie-logo}{witseie-logo}
+	\logo{\pgfuseimage{wits-logo}}
+
+\mode<presentation>
+{
+  \setbeamercolor{palette sidebar secondary}{use=sidebar,fg=structure.fg!65!black}
+
+  \useoutertheme[left,height=0pt]{sidebar}
+  \usecolortheme{sidebartab}
+  \setbeamertemplate{sidebar canvas left}[vertical shading][top=blue!75!black,middle=blue!10!white,bottom=white]
+  \setbeamercovered{dynamic}
+  \beamertemplatenavigationsymbolsempty
+
+%  \useoutertheme[hideallsubsections,right]{sidebar}
+%  \useoutertheme[right]{sidebar}
+%  \setbeamertemplate{sidebar canvas right}[vertical shading][bottom=blue!75!black,top=white]
+}
+
+\makeatletter
+\setbeamertemplate{sidebar \beamer@sidebarside}
+{
+\beamer@tempdim=\beamer@sidebarwidth%
+\advance\beamer@tempdim by -6pt%
+{\usebeamerfont{title in sidebar}%
+  \vskip1.5em%
+  \hskip3pt%
+  \usebeamercolor[fg]{title in sidebar}%
+  \insertshorttitle[width=\beamer@tempdim,center,respectlinebreaks]\par%
+  \vskip1.25em%
+}%
+\insertverticalnavigation{\beamer@sidebarwidth}%
+\vfill
+\ifx\beamer@sidebarside\beamer@lefttext%
+\else%
+  \usebeamercolor{normal text}%
+  \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
+  \vskip2pt%
+\fi%
+\hskip3pt
+\insertlogo
+% \includegraphics[width=\beamer@tempdim,keepaspectratio]{wits-logo}~%
+\vskip2pt
+}
+\makeatother
+
+\usefonttheme{structurebold}
+
+\title[\color{white}Sidebar Title]{Full title of presentation}
+\subtitle{Subtitle if required}
+\titlegraphic{\pgfuseimage{witseie-logo} \hspace{5cm}~\pgfuseimage{iclp-logo}}
+
+\author[]{Author 1 \and Author 2}
+
+\institute{School of Electrical and Information Engineering\\University of the Witwatersrand, Johannesburg, South Africa\\Email: my@email.com}
+
+\date{Date!!!}
+
+\setbeamerfont{subsection in sidebar}{size=\fontsize{4.7pt}{6pt}}
+\setbeamercolor*{section in sidebar shaded}{parent=palette sidebar secondary,fg=black}
+\setbeamercolor*{section in sidebar}
+  {parent=section in sidebar shaded,use={sidebar,section in sidebar shaded},%
+   fg=black,bg=white!70!black}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% \begin{frame}
+% 	\frametitle[]{Outline}
+% 	\tableofcontents
+% \end{frame}
+
+\section{Introduction}
+\begin{frame}
+	\frametitle{Introduction}
+	\begin{itemize}
+		\item
+	\end{itemize}
+\end{frame}
+
+\section[Section 1]{First section showing different title in sidebar}
+\begin{frame}
+	\frametitle{Frame 1}
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+	\frametitle{Conclusion}
+	\begin{itemize}
+		\item
+	\end{itemize}
+\end{frame}
+
+\section[]{Thank You}
+\begin{frame}
+	\frametitle{Thank you}
+	\begin{center}
+		\pgfuseimage{witseie-logo}
+	\end{center}
+	\begin{center}
+		my@email.com
+	\end{center}
+
+\end{frame}
+
+% This is for a thank you picture. Just comment above.
+% \mode<presentation>{
+% { % all template changes are local to this group.
+%     \setbeamercolor{background canvas}{bg=black}
+%     \setbeamertemplate{navigation symbols}{}
+%     \begin{frame}[plain]
+%         \begin{tikzpicture}[remember picture,overlay]
+%             \node[at=(current page.center)] {
+%                 \includegraphics[width=\paperwidth, keepaspectratio=true]{thankyou.pdf}
+%             };
+%         \end{tikzpicture}
+%      \end{frame}
+% }
+% }
+
+\end{document}
